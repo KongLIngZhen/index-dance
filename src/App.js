@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react'
+import { withRouter } from 'react-router-dom';
 import './App.css';
+import 'antd/dist/antd.css';
+import Header from './components/Header';
+import { Row, Col } from 'antd';
+import Index from './components/Index';
+import ShChart from './components/ShChart';
+import RankTable from './components/RankTable';
+import { renderRoutes } from 'react-router-config';
+import routes from './router/index';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Row>
+        <Col span={6} style={{padding: '20px'}}>
+          <Index />
+          <ShChart />
+        </Col>
+        <Col span={18} style={{padding: '20px'}}>
+          <RankTable />
+        </Col>
+      </Row>
+      {/* {renderRoutes(routes)} */}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
